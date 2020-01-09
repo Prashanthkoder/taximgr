@@ -23,8 +23,14 @@ public:
   Driver(){dloc.x=200;dloc.y=200;noRides=0;vptr=&c;vtype=1;}
   Driver(double d){rating=d;}
   char* getName(){return dr_name;}
-  void getveh(){vptr->printVehName();}
-  int getvehType(){return vptr->getVehType();}
+  void getveh(){
+  if (vtype==1)vptr=&c;
+  else vptr=&b;
+  vptr->printVehName();}
+  int getvehType(){
+	    if (vtype==1)vptr=&c;
+  		else vptr=&b;
+	  return vptr->getVehType();}
   void input_data()
   {
     cin.ignore(1000, '\n');
@@ -58,7 +64,7 @@ public:
   void superDetails()
   {
       cout<<"Name : "<<dr_name<<endl<<"Phone no: "<<dr_phoneno<<endl;
-	    if(vtype==1)vptr=&c; else vptr=&b;
+      if(vtype==1)vptr=&c; else vptr=&b;
       vptr->printVehName();
       cout<<"Driver number: "<<dr_no<<endl<<endl;
   }
